@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get :followings, :followers
     end
   end
-  post 'follow/:id' => 'relationships#create', as: 'relationships'
-  delete 'unfollow/:id' => 'relationships#destroy', as: 'relationship'
+  post 'follow/:id' => 'relationships#follow', as: 'follow'
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
   resources :users, only: [:index, :show, :edit, :update]
 end

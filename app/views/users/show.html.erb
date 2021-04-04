@@ -6,15 +6,9 @@
       <div class='pt-3'>
       <% unless @user == current_user %>
         <% if current_user.following?(@user) %>
-          <%= form_with model: @relationship, url: relationship_path, method: :delete, local: true do |f| %>
-            <%= f.hidden_field :follow_id, value: @user.id %>
-            <%= f.submit "フォロー外す", class: "btn btn-primary" %>
-          <% end %>
+           <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: "btn btn-info" %>
         <% else %>
-          <%= form_with model: @set_relationship, url: relationships_path, local: true do |f| %>
-            <%= f.hidden_field :follow_id, value: @user.id %>
-            <%= f.submit "フォローする", class: "btn btn-success" %>
-          <% end %>
+           <%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-success" %>
         <% end %>
       <% end %>
       </div>
